@@ -18,8 +18,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.js"
+            },
             "outputPath": "dist/favicon-hue",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -28,14 +31,23 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json",
+              "src/_locales"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
           },
           "configurations": {
+            "dev": {
+              "customWebpackConfig": {
+                "path": "./custom-webpack-dev.config.js"
+              },
+              "sourceMap": true
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -94,6 +106,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []

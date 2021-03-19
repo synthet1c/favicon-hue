@@ -1,0 +1,35 @@
+{
+  "author": "Andrew Fountain",
+  "name": "Favicon Hue",
+  "background": {
+    "scripts": [
+      "background.js",
+      "runtime.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }],
+  "default_locale": "en_US",
+  "description": "Change the hue of your favicon by domain or regular expression",
+  "homepage_url": "https://github.com/synthet1c/favicon-hue",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png",
+    "256": "assets/icons/icon256.png"
+  },
+  "manifest_version": 2,
+  "options_page": "index.html",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "chrome://favicon/"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'; img-src chrome://favicon;",
+  "short_name": "favhue",
+  "version": "1.3.2"
+}
